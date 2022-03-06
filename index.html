@@ -127,7 +127,7 @@
                 .on('click', function (e) {
                     e.preventDefault();
                     inProgress = !inProgress;
-                    $(this).text((inProgress) ? 'АТАКОВАТЬ' : 'СТОП');
+                    $(this).text((inProgress) ? 'СТОП' : 'АТАКОВАТЬ');
                     if (inProgress) {
                         start();
                     } else {
